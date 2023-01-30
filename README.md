@@ -22,4 +22,4 @@ TODO: list of authors
 
 ## Acknowledgments
 
-TODO: cite any tutorials followed here
+Loosely following [this tutorial](https://realpython.com/nltk-nlp-python/) on python's NLTK package
