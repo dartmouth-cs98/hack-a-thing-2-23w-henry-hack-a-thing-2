@@ -1,5 +1,6 @@
 from tokenize_from_file import *
 from googletrans import Translator
+from wordfreq import zipf_frequency
 
 def get_candidates(filename, source_lang = "en", target_lang = "es"):
     candidates = frequency_dist(filename)
@@ -13,7 +14,7 @@ def get_candidates(filename, source_lang = "en", target_lang = "es"):
 
         target_word = translation.text.lower()
 
-        if source_word != target_word:
-            quiz_candidates.append((source_word, target_word))
+        if source_word != target_word and zipf_frequency(source_word, 'en') < 6:
+            quiz_candidates.append((source_word, target_word, candidate[1]))
     
     return quiz_candidates
