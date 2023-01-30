@@ -1,5 +1,6 @@
-from tokenize_from_file import tokenize_from_file
+from tokenize_from_file import *
 
 filename = "sample_text/twins.txt"
 
-print(tokenize_from_file(filename))
+print(frequency_count(filename))
+
