@@ -18,3 +18,12 @@ def get_candidates(filename, source_lang = "en", target_lang = "es"):
             quiz_candidates.append((source_word, target_word, candidate[1]))
     
     return quiz_candidates
+
+def get_quiz_words(filename, source_lang = "en", target_lang = "es", length=3):
+    candidates = get_candidates(filename, source_lang, target_lang)
+
+    quiz_words = candidates[:length]
+
+    return quiz_words
+
+
