@@ -1,9 +1,9 @@
-import requests
+import requests, json
 from config import AZURE_KEY
 
 
 
-def azure_dictionary(text, source_lang='en', target_lang='en'):
+def azure_dictionary(text, source_lang='en', target_lang='es'):
 
     endpoint = "https://api.cognitive.microsofttranslator.com"
     path = '/dictionary/lookup'

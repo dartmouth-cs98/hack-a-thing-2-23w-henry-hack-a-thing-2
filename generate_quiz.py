@@ -2,7 +2,7 @@ from tokenize_from_file import *
 from googletrans import Translator
 from wordfreq import zipf_frequency
 from google_api import translate_text
-from azure_api import azure_translate
+from azure_api import azure_translate, azure_dictionary
 import requests
 from config import AZURE_KEY
 
@@ -44,5 +44,19 @@ def get_quiz_words(filename, source_lang = "en", target_lang = "es", length=3):
     quiz_words = candidates[:length]
 
     return quiz_words
+
+
+def check_override(word, answer, source_lang = "en", target_lang = "es"):
+    dictionary = azure_dictionary(word, source_lang, target_lang)[0]
+    
+    translations = dictionary['translations']
+
+    for translation in translations:
+        if translation['displayTarget'] == answer:
+            return True
+    
+    return False
+
+
 
 
