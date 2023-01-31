@@ -17,7 +17,4 @@ def translate_text(text="Hello, world!", project_id="buoyant-set-376321"):
         }
     )
 
-    print(response.translations)
     return response.translations
-    for translation in response.translations:
-        print("Translated text: {}".format(translation.translated_text))
