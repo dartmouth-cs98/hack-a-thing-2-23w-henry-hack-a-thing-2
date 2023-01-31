@@ -23,3 +23,4 @@ TODO: list of authors
 ## Acknowledgments
 
 Loosely following [this tutorial](https://realpython.com/nltk-nlp-python/) on python's NLTK package
+Used [this](https://console.cloud.google.com/welcome?project=buoyant-set-376321&walkthrough_id=translation_api_v3_index) tutorial for the Google Translate API

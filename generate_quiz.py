@@ -1,6 +1,7 @@
 from tokenize_from_file import *
 from googletrans import Translator
 from wordfreq import zipf_frequency
+from google.cloud import translate
 
 def get_candidates(filename, source_lang = "en", target_lang = "es"):
     candidates = frequency_dist(filename)

@@ -1,1 +1,3 @@
 *.cpython*
+config.py
+service_account.json
