@@ -6,6 +6,9 @@ from azure_api import azure_translate
 import requests
 from config import AZURE_KEY
 
+from unidecode import unidecode # found here: https://stackoverflow.com/questions/517923/what-is-the-best-way-to-remove-accents-normalize-in-a-python-unicode-string
+
+
 def get_candidates(filename, length, source_lang = "en", target_lang = "es"):
 
     candidates_found = 0
@@ -23,7 +26,7 @@ def get_candidates(filename, length, source_lang = "en", target_lang = "es"):
 
         translation = azure_translate(source_word)
 
-        target_word = translation.lower()
+        target_word = unidecode(translation.lower())
 
         if source_word != target_word:
             quiz_candidates.append((source_word, target_word, candidate[1]))
