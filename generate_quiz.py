@@ -2,6 +2,9 @@ from tokenize_from_file import *
 from googletrans import Translator
 from wordfreq import zipf_frequency
 from google_api import translate_text
+from azure_api import azure_translate
+import requests
+from config import AZURE_KEY
 
 def get_candidates(filename, length, source_lang = "en", target_lang = "es"):
 
@@ -18,7 +21,7 @@ def get_candidates(filename, length, source_lang = "en", target_lang = "es"):
         if not zipf_frequency(source_word, 'en') < 6:
             continue
 
-        translation = translate_text(source_word)[0].translated_text
+        translation = azure_translate(source_word)
 
         target_word = translation.lower()
 
