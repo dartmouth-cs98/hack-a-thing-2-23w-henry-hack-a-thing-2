@@ -2,29 +2,29 @@ import requests
 from config import AZURE_KEY
 
 
-endpoint = "https://api.cognitive.microsofttranslator.com"
-path = '/dictionary/lookup'
-constructed_url = endpoint + path
 
-headers = {
-    'Ocp-Apim-Subscription-Key': AZURE_KEY,
-    # location required if you're using a multi-service or regional (not global) resource.
-    'Ocp-Apim-Subscription-Region': 'eastus'
-    # 'Content-type': 'application/json'
-    #'X-ClientTraceId': str(uuid.uuid4())
-}
+def azure_dictionary(text, source_lang='en', target_lang='en'):
 
-params = {
-    'api-version': '3.0',
-    'from': 'en',
-    'to': 'es'
-}
+    endpoint = "https://api.cognitive.microsofttranslator.com"
+    path = '/dictionary/lookup'
+    constructed_url = endpoint + path
 
-body = [{
-    'text': 'deal'
-}]
+    headers = {
+        'Ocp-Apim-Subscription-Key': AZURE_KEY,
+        'Ocp-Apim-Subscription-Region': 'eastus'
+    }
 
-request = requests.post(constructed_url, params=params, headers=headers, json=body)
-response = request.json()
+    params = {
+        'api-version': '3.0',
+        'from': source_lang,
+        'to': target_lang
+    }
 
-print(response)
+    body = [{
+        'text': text
+    }]
+
+    request = requests.post(constructed_url, params=params, headers=headers, json=body)
+    response = request.json()
+
+    return response
