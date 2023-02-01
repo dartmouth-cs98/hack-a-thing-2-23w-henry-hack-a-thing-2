@@ -2,6 +2,7 @@ from nltk import word_tokenize
 from nltk.corpus import stopwords
 from nltk import FreqDist
 from string import punctuation
+from nltk.stem import WordNetLemmatizer
 
 
 def tokenize_from_file(filename):
@@ -33,6 +34,7 @@ def frequency_count(filename):
     return frequency_table
 
 def frequency_dist(filename):
+    lemmatizer = WordNetLemmatizer()
 
     file_tokens = tokenize_from_file(filename)
 
@@ -44,7 +46,8 @@ def frequency_dist(filename):
         if any(p in token for p in punctuation):
             continue
         if token not in stop_words:
-            meaningful_tokens.append(token)
+            lemma = lemmatizer.lemmatize(token)
+            meaningful_tokens.append(lemma)
 
     frequency_dist = FreqDist(meaningful_tokens)
 
